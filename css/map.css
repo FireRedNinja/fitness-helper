@@ -1,10 +1,4 @@
 #map{
     height: 100%;
     width: 100%;
-    zoomControl: false;
-    mapTypeControl: false;
-    scaleControl: false;
-    streetViewControl: false;
-    rotateControl: false;
-    fullscreenControl: false;
 }
