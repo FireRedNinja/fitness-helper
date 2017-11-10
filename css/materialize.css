@@ -4271,6 +4271,8 @@ nav .brand-logo {
   display: inline-block;
   font-size: 2.1rem;
   padding: 0;
+  height: 42;
+  width: 42;
 }
 
 nav .brand-logo.center {
