@@ -5,7 +5,7 @@ function setup(){
   button.mousePressed(changeBackground);
 }
 function draw(){
-
+  changeBackground();
 }
 
 function changeBackground(){
