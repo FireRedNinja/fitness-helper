@@ -30,28 +30,26 @@
             <div class="row">
                 <h2 class="center-align">Planner<h2>
                 <form class="col s12">
-                      <div>
-                          <input type="date" class="datepicker">
-                      </div>
-                      <table>
-    <tr><td>Text to Save:</td></tr>
-    <tr>
-        <td colspan="3">
-            <textarea id="inputTextToSave" cols="80" rows="25"></textarea>
-        </td>
-    </tr>
-    <tr>
-        <td>Filename to Save As:</td>
-        <td><div class="input-field col s6"></div>
-            <input id="inputFileNameToSaveAs"></input></td>
-        <td><button onclick="saveTextAsFile()">Save Text to File</button></td>
-    </tr>
-    <tr>
-        <td>Select a File to Load:</td>
-        <td><input type="file" id="fileToLoad"></td>
-        <td><button onclick="loadFileAsText()">Load Selected File</button><td>
-    </tr>
-</table>
+                    <div>
+                      <input type="date" class="datepicker">
+                    </div>
+        <table>
+            <tr><td>Text to Save:</td></tr>
+            <tr>
+                <td colspan="3">
+                <div class="input-field col s6"></div>
+                <input id="inputTextToSave" cols="80" rows="25"></input></td>
+                </td>
+            </tr>
+            <tr>
+                <td>Filename to Save As:</td>
+                <td>
+                    <div class="input-field col s6"></div>
+                    <input id="inputFileNameToSaveAs"></input></td>
+                <td>
+                <button onclick="saveTextAsFile()" class="btn waves-effect waves-light center-align" type="submit" name="action">Save Text to File</button></td>
+            </tr>
+        </table>
 
 <script type="text/javascript">
 
@@ -78,21 +76,9 @@ function destroyClickedElement(event)
     document.body.removeChild(event.target);
 }
 
-function loadFileAsText()
-{
-    var fileToLoad = document.getElementById("fileToLoad").files[0];
-
-    var fileReader = new FileReader();
-    fileReader.onload = function(fileLoadedEvent)
-    {
-        var textFromFileLoaded = fileLoadedEvent.target.result;
-        document.getElementById("inputTextToSave").value = textFromFileLoaded;
-    };
-    fileReader.readAsText(fileToLoad, "UTF-8");
-}
 
 </script>
-                </form>
+            </form>
             </div>
         </div>
     </section>
