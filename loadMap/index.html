@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Fitness Monitor </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css">
     <link rel="stylesheet" type="text/css" href="/css/materialize.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+
     <style>
-      .icon {
-        max-width: 70%;
-        max-height: 70%;
-        margin: 4px;
-      }
+        .icon {
+            max-width: 70%;
+            max-height: 70%;
+            margin: 4px;
+        }
     </style>
     
     <style type="text/css">
@@ -32,11 +35,12 @@
       .gpx ul.info li span { color: black; }
     </style>
 </head>
+
 <body>
-    
+
     <nav>
         <div class="nav-wrapper">
-            <img src='assets/logo.png' width="55",height="55">
+            <img src='assets/logo.png' width="55" ,height="55">
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li class="active"><a href="index.html">Home</a></li>
                 <li><a href="map.html">Map</a></li>
@@ -50,7 +54,7 @@
 
         
     <div class="container center-align">
-    <div id="map" style="width: 70vw; height: 50vh; outline: medium none black; "></div>
+        <div id="map" style="width: 70vw; height: 50vh; outline: medium none black; "></div>
     </div>
     <br>
     
@@ -81,8 +85,8 @@
 <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"></script>
 <script src="https://unpkg.com/togeojson@0.14.2"></script>
 <script src="/js/leaflet.filelayer.js"></script>
-<script type="text/javascript" src="/js/materiallize.min.js"></script>
-<script src="https://rawgithub.com/mpetazzoni/leaflet-gpx/master/gpx.js"></script>   
+<script type="text/javascript" src="/js/materialize.min.js"></script>
+<script src="https://rawgithub.com/mpetazzoni/leaflet-gpx/master/gpx.js"></script>
 <script>
   (function (window) {
     'use strict';
