@@ -1,8 +1,23 @@
-    body {
-        padding: 0;
-        margin: 0;
-    }
+body {
+    padding: 0;
+    margin: 0;
+}
 
-    canvas {
-        vertical-align: top;
-    }
+canvas {
+    vertical-align: top;
+}
+
+.dropdown-content{
+    background-color: #FFFFFF;
+    margin: 0;
+    display: none;
+    min-width: 300px;
+    max-height: auto;
+    margin-left: -1px;
+    overflow: hidden;
+    opacity: 0;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+    will-change: width, height;
+}
