@@ -14,7 +14,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <img src='assets/logo.png' width="55",height="55">
+            <img src='assets/logo.png' width="55" ,height="55">
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="map.html">Map</a></li>
@@ -24,34 +24,36 @@
     </nav>
 
 
-    <section class="fdb-block" style="background-image: url(./imgs/bg_0.svg)">
+    <section class="fdb-block">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-8 col-lg-7 col-xl-5 text-center">
-                    <div class="fdb-box fdb-touch">
-                        <div class="row">
-                            <div class="col">
-                                <h1>Log In</h1>
-                            </div>
+            <div class="row">
+                <h2 class="center-align">Login<h2>
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
                         </div>
-                        <div class="row mt-4">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col">
-                                <input type="password" class="form-control mb-1" placeholder="Password">
-                                <p class="text-right"><a href="https://www.froala.com">Recover Password</a></p>
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col">
-                                <button class="btn" type="button">Submit</button>
-                            </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate">
+                            <label for="last_name">Last Name</label>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+
+                  <button class="btn waves-effect waves-light center-align" type="submit" name="action">Submit</button>
+                </form>
             </div>
         </div>
     </section>
