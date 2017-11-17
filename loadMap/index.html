@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Leaflet Filelayer </title>
+    <title>Fitness Monitor </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
@@ -36,14 +36,16 @@
     <div class="container center-align">
     <div id="map" style="width: 70vw; height: 50vh; outline: medium none black; "></div>
     </div>
-    
-    
+    <br>
+    <li>Distance:&nbsp;<span class="distance">
+    </span>&nbsp;mi</li>
     
 </body>
 <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"></script>
 <script src="https://unpkg.com/togeojson@0.14.2"></script>
 <script src="/js/leaflet.filelayer.js"></script>
 <script type="text/javascript" src="/js/materiallize.min.js"></script>
+<script src="https://rawgithub.com/mpetazzoni/leaflet-gpx/master/gpx.js"></script>   
 <script>
   (function (window) {
     'use strict';
@@ -77,11 +79,38 @@
                 }
             }
         }).addTo(map);
+    
+    
+        new L.GPX(url, {
+          async: true,
+          marker_options: {
+            startIconUrl: 'http://github.com/mpetazzoni/leaflet-gpx/raw/master/pin-icon-start.png',
+            endIconUrl:   'http://github.com/mpetazzoni/leaflet-gpx/raw/master/pin-icon-end.png',
+            shadowUrl:    'http://github.com/mpetazzoni/leaflet-gpx/raw/master/pin-shadow.png',
+          },
+        }).on('loaded', function(e) {
+          var gpx = e.target;
+          map.fitBounds(gpx.getBounds());
+          control.addOverlay(gpx, gpx.get_name());
+          _t('h3').textContent = gpx.get_name();
+          _c('start').textContent = gpx.get_start_time().toDateString() + ', '
+            + gpx.get_start_time().toLocaleTimeString();
+          _c('distance').textContent = gpx.get_distance_imp().toFixed(2);
+          _c('duration').textContent = gpx.get_duration_string(gpx.get_moving_time());
+          _c('pace').textContent     = gpx.get_duration_string(gpx.get_moving_pace_imp(), true);
+          _c('avghr').textContent    = gpx.get_average_hr();
+          _c('elevation-gain').textContent = gpx.to_ft(gpx.get_elevation_gain()).toFixed(0);
+          _c('elevation-loss').textContent = gpx.to_ft(gpx.get_elevation_loss()).toFixed(0);
+          _c('elevation-net').textContent  = gpx.to_ft(gpx.get_elevation_gain()
+            - gpx.get_elevation_loss()).toFixed(0);
+        }).addTo(map);    
+    
     }
-
+    
     window.addEventListener('load', function () {
         initMap();
     });
+    display_gpx(document.getElementById('load'));
 }(window));
 </script>
 </html>
