@@ -190,15 +190,17 @@
 
         }
 
-        display_gpx(document.getElementById('demo'));
-        window.addEventListener('load', function() {
-            initMap();
-        });
+
 
         $("#the-file-input").change(function() {
             // will log a FileList object, view gifs below
-            console.log(this.files);
+            console.log(this.files["0"]["name"]);
+            display_gpx(document.getElementById(this.files["0"]["name"]));
+        });
 
+        display_gpx(document.getElementById('demo'));
+        window.addEventListener('load', function() {
+            initMap();
         });
     </script>
 </body>
