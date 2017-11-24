@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Fitness Monitor</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" />
+        
+    
+    </head>
+    <body>
+        
+        
+        
+        
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.3.1/gpx.min.js"></script>
+        <script type="application/javascript">
+            var map = L.map('map');
+            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'}).addTo(map);
+            var gpx = "Lugano.gpx";
+            new L.GPX(gpx, {async: true}).on('loaded',function(e)){map.fitBounds(e.target.getBounds());
+                                             }).addTo(map);
+        
+        
+        </script>
+        
+    </body>
+
+</html>
