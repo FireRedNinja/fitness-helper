@@ -196,6 +196,9 @@
             // will log a FileList object, view gifs below
             console.log(this.files["0"]["name"]);
             display_gpx(document.getElementById(this.files["0"]["name"]));
+            window.addEventListener('load', function() {
+                initMap();
+            });
         });
 
         display_gpx(document.getElementById('demo'));
