@@ -42,6 +42,7 @@
       <br>
 
 
+    <input id="the-file-input" type="file">
 
       <section id="demo" class="gpx" data-gpx-source="demo.gpx" data-map-target="demo-map">
       <header>
@@ -140,6 +141,11 @@
       window.addEventListener('load', function () {
         initMap();
     });
+
+    $("#the-file-input").change(function() {
+    // will log a FileList object, view gifs below
+    console.log(this.files);
+});
     </script>
   </body>
 </html>
