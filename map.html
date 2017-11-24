@@ -1,61 +1,64 @@
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Leaflet Routing Machine Example</title>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-        <link rel="stylesheet" href="/js/leaflet-routing-machine-3.2.7/dist/leaflet-routing-machine.css" />
-        <link rel="stylesheet" type="text/css" href="/css/materialize.min.css" />
-        <link rel="stylesheet" type="text/css" href="/css/main.css" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-        
-        <style>
-            .map {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-            }
-        </style>
-        
-    </head>
 
-    <body>
-        <ul id="dropdown1" class="dropdown-content">
-            <li><a href="planner.html">Exercise Planner</a></li>
-            <li><a href="goals.html">Goals</a></li>
-        </ul>
-        <nav>
-            <div class="nav-wrapper">
-                <img src='assets/logo.png' width="55" ,height="55">
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="map.html">Map</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a class="dropdown-button" href="#" data-activates="dropdown1" data-beloworigin="true">Planner<i class="material-icons right">arrow_drop_down</i></a></li>
-                </ul>
-            </div>
-        </nav>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
-        <script type="text/javascript" src="js/planner.js"></script>
-        <script type="text/javascript" src="js/materialize.js"></script>
-    
-        <div id="map" class="map"></div>
-        <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-        <script src="/js/leaflet-routing-machine-3.2.7/dist/leaflet-routing-machine.js"></script>
-        <script>
-            var map = L.map('map');
+<head>
+    <meta charset="utf-8" />
+    <title>Map</title>
+    <link rel="stylesheet" type="text/css" href="/css/materialize.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/GPXViewer.js"></script>
+    <style>
+        .map {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 
-            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png', {
-                attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
+</head>
 
-            L.Routing.control({
-                waypoints: [
-                L.latLng(56.061735, -3.452833),    
-                L.latLng(56.070124, -3.463494)
-                ],
-                routeWhileDragging: true
-            }).addTo(map);
-        </script>
-    </body>
+<body>
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="planner.html">Exercise Planner</a></li>
+        <li><a href="goals.html">Goals</a></li>
+    </ul>
+    <nav>
+        <div class="nav-wrapper">
+            <img src='assets/logo.png' width="55" ,height="55">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="map.html">Map</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a class="dropdown-button" href="#" data-activates="dropdown1" data-beloworigin="true">Planner<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </div>
+    </nav>
+    <input id="file-input" name="gpxfile" type="file">
+
+    <div id="map" style="width: 100%; height: 75vh;"></div>
+
+
+
+    <script type="text/javascript" src="js/planner.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script>
+        function initMap() {
+            var uluru = {
+                lat: -25.363,
+                lng: 131.044
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCNdcClomhEAJvLIG2-jUAocaCrnd-CvA&callback=initMap"></script>
+</body>
 
 </html>
