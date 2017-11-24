@@ -50,148 +50,60 @@
     </nav>
     <br>
     <br>
-    
 
-        
+
+
     <div class="container center-align">
         <div id="map" style="width: 70vw; height: 50vh; outline: medium none black; "></div>
     </div>
     <br>
-    
-         
-      <section id="demo" class="gpx" data-gpx-source="demo.gpx" data-map-target="demo-map">
-      <header>
-        <h3>Loading...</h3>
-        <span class="start"></span>
-      </header>
+    <li>Distance:&nbsp;<span id="distance" class="distance">
+    </span>&nbsp;mi</li>
 
-      <article>
-        <div class="map" id="demo-map"></div>
-      </article>
-
-      <footer>
-        <ul class="info">
-          <li>Distance:&nbsp;<span class="distance"></span>&nbsp;mi</li>
-          &mdash; <li>Duration:&nbsp;<span class="duration"></span></li>
-          &mdash; <li>Pace:&nbsp;<span class="pace"></span>/mi</li>
-          &mdash; <li>Avg&nbsp;HR:&nbsp;<span class="avghr"></span>&nbsp;bpm</li>
-          &mdash; <li>Elevation:&nbsp;+<span class="elevation-gain"></span>&nbsp;ft,
-            -<span class="elevation-loss"></span>&nbsp;ft
-            (net:&nbsp;<span class="elevation-net"></span>&nbsp;ft)</li>
-        </ul>
-      </footer>
-    </section> 
-
+</body>
 <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"></script>
 <script src="https://unpkg.com/togeojson@0.14.2"></script>
 <script src="/js/leaflet.filelayer.js"></script>
 <script type="text/javascript" src="/js/materialize.min.js"></script>
 <script src="https://rawgithub.com/mpetazzoni/leaflet-gpx/master/gpx.js"></script>
 <script>
-  (function (window) {
-    'use strict';
-    
-      
-    function display_gpx(elt) {
-        if (!elt) return;
-
-        var url = elt.getAttribute('data-gpx-source');
-        var mapid = elt.getAttribute('data-map-target');
-        if (!url || !mapid) return;
-
-        function _t(t) { return elt.getElementsByTagName(t)[0]; }
-        function _c(c) { return elt.getElementsByClassName(c)[0]; }
-
-        var map = L.map(mapid);
-        
-          L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-		id: 'mapbox.streets'
-	}).addTo(map);
-          
-          
-          
-          
-          L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'
-        }).addTo(map);
-
-        var control = L.control.layers(null, null).addTo(map);
-
-        new L.GPX(url, {
-          async: true,
-          marker_options: {
-            startIconUrl: 'http://github.com/mpetazzoni/leaflet-gpx/raw/master/pin-icon-start.png',
-            endIconUrl:   'http://github.com/mpetazzoni/leaflet-gpx/raw/master/pin-icon-end.png',
-            shadowUrl:    'http://github.com/mpetazzoni/leaflet-gpx/raw/master/pin-shadow.png',
-          },
-        }).on('loaded', function(e) {
-          var gpx = e.target;
-          map.fitBounds(gpx.getBounds());
-          control.addOverlay(gpx, gpx.get_name());
-
-          /*
-           * Note: the code below relies on the fact that the demo GPX file is
-           * an actual GPS track with timing and heartrate information.
-           */
-          _t('h3').textContent = gpx.get_name();
-          _c('start').textContent = gpx.get_start_time().toDateString() + ', '
-            + gpx.get_start_time().toLocaleTimeString();
-          _c('distance').textContent = gpx.get_distance_imp().toFixed(2);
-          _c('duration').textContent = gpx.get_duration_string(gpx.get_moving_time());
-          _c('pace').textContent     = gpx.get_duration_string(gpx.get_moving_pace_imp(), true);
-          _c('avghr').textContent    = gpx.get_average_hr();
-          _c('elevation-gain').textContent = gpx.to_ft(gpx.get_elevation_gain()).toFixed(0);
-          _c('elevation-loss').textContent = gpx.to_ft(gpx.get_elevation_loss()).toFixed(0);
-          _c('elevation-net').textContent  = gpx.to_ft(gpx.get_elevation_gain()
-            - gpx.get_elevation_loss()).toFixed(0);
-        }).addTo(map);
-          
- 
-      }
-      
-    function initMap() {
-        var L = window.L;
-        var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data &copy; 2013 OpenStreetMap contributors'
-        });
-        var map = L.map('map', {
-            center: [0, 0],
-            zoom: 2
-        }).addLayer(osm);
-        var style = {
-            color: 'red',
-            opacity: 1.0,
-            fillOpacity: 1.0,
-            weight: 2,
-            clickable: false
-        };
-        L.Control.FileLayerLoad.LABEL = '<img class="icon" src="assets/folder.svg" alt="file icon"/>';
-        L.Control.fileLayerLoad({
-            fitBounds: true,
-            layerOptions: {
-                style: style,
-                pointToLayer: function (data, latlng) {
-                    return L.circleMarker(
-                    latlng,
-                    { style: style }
-                    );
-                }
+    var map = L.map('map').fitWorld
+    L.Control.fileLayerLoad({
+        // Allows you to use a customized version of L.geoJson.
+        // For example if you are using the Proj4Leaflet leaflet plugin,
+        // you can pass L.Proj.geoJson and load the files into the
+        // L.Proj.GeoJson instead of the L.geoJson.
+        layer: L.geoJson,
+        // See http://leafletjs.com/reference.html#geojson-options
+        layerOptions: {
+            style: {
+                color: 'red'
             }
-        }).addTo(map);
-    
-    
+        },
+        // Add to map after loading (default: true) ?
+        addToMap: true,
+        // File size limit in kb (default: 1024) ?
+        fileSizeLimit: 1024,
+        // Restrict accepted file formats (default: .geojson, .kml, and .gpx) ?
+        formats: [
+            '.geojson',
+            '.kml'
+        ]
+    }).addTo(map);
 
-    }
-    display_gpx(document.getElementById('demo'));
-    window.addEventListener('load', function () {
-        initMap();
-    });
-    
-}(window));
+    // var map = L.map('map').setView([51.505, -0.09], 13);
+    // L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    //     attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'
+    // }).addTo(map);
+
+    // var gpx = 'Lugano,gpx'; // URL to your GPX file or the GPX itself
+    // new L.GPX(gpx, {
+    //     async: true
+    // }).on('loaded', function(e) {
+    //     map.fitBounds(e.target.getBounds());
+    // }).addTo(map);
+
+    console.log("Working");
 </script>
-</body>    
+
 </html>
