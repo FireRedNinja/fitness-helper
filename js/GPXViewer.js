@@ -112,7 +112,8 @@ $(document).ready(function() {
             });
 
             //  Add the overview stats to preview run details...
-            $('#activity-overview').text("Average Heartrate: " + (totalHR / totalTracks) + " Average Cadence: " + (totalCAD / totalTracks));
+            $('#average-heartrate').text("Average Heartrate: " + (totalHR / totalTracks));
+            $('#average-cadence').text(" Average Cadence: " + (totalCAD / totalTracks));
 
             // Recentre the MAP
             map.setCenter(new google.maps.LatLng(totalLat / totalTracks, totalLon / totalTracks));
