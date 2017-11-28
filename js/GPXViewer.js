@@ -39,6 +39,7 @@ $(document).ready(function() {
             var totalTracks = 0;
             var totalHR = 0;
             var totalCAD = 0;
+            var totalElev = 0;
 
             var totalLat = 0;
             var totalLon = 0;
@@ -62,12 +63,15 @@ $(document).ready(function() {
 
                 var cad = $(this).find('ns3\\:cad').text();
 
+                var elev = $(this).find('ele').text();
+
 
                 totalTracks += 1;
                 totalHR += parseInt(hr);
                 totalCAD += parseInt(cad);
                 totalLat += parseFloat(lat);
                 totalLon += parseFloat(lon);
+                totalElev += parseFloat(elev);
 
                 //  Get the figures for the bounding box
                 if (maxLat == null || maxLon == null || minLat == null || minLon == null) {
@@ -113,7 +117,8 @@ $(document).ready(function() {
 
             //  Add the overview stats to preview run details...
             $('#average-heartrate').text("Average Heartrate: " + (totalHR / totalTracks));
-            $('#average-cadence').text(" Average Cadence: " + (totalCAD / totalTracks));
+            $('#average-cadence').text("Average Cadence: " + (totalCAD / totalTracks));
+            $('#average-elevation').text("Average Elevation: " + (totalElev / totalTracks));
 
             // Recentre the MAP
             map.setCenter(new google.maps.LatLng(totalLat / totalTracks, totalLon / totalTracks));
