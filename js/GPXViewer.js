@@ -159,14 +159,6 @@ $(document).ready(function() {
                 }]
             },
             options: {
-                animation: {
-                    onProgress: function(animation) {
-                        progress.value = animation.animationObject.currentStep / animation.animationObject.numSteps;
-                    },
-                    onAnimationComplete: function(animation){
-                        linea
-                    }
-                },
                 scales: {
 
                     yAxes: [{
