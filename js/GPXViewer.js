@@ -59,7 +59,7 @@ $(document).ready(function() {
 
 
             // Iterate through all track segements and find a route.
-            $xml.find('trkpt').each(function() {$('#file-input').change(function() {
+            $xml.find('trkpt').each(function() {
                 // this is where all the reading and writing will happen
                 var lat = $(this).attr("lat");
                 var lon = $(this).attr("lon");
@@ -138,7 +138,7 @@ $(document).ready(function() {
 
             map.fitBounds(new google.maps.LatLngBounds(new google.maps.LatLng(minLat, minLon), new google.maps.LatLng(maxLat, maxLon)));
 
-        });
+        };
 
         console.log("time");
         console.log(timeArray);
@@ -175,11 +175,7 @@ $(document).ready(function() {
                     xAxes: [{
                         scaleLabel: {
                             labelString: "Time",
-<<<<<<< HEAD
                             fontSize: 12,
-=======
-                            fontSize: 14,
->>>>>>> 77c69711f911ffaf2345aafa609436438f934728
                             display: true
                         },
                         ticks: {
@@ -302,10 +298,8 @@ $(document).ready(function() {
         setTimeout(function() { heartRate.update(); },500);
         setTimeout(function() { Cadence.update(); },500);
         
-        $('canvas').css("visibility: hidden");
         // end of chartjs
         reader.readAsText(this.files[0]);
         $('#file-preview').text(this.files[0].name);
-
     });
 });
