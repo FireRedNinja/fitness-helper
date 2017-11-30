@@ -5,8 +5,8 @@ $("#submitGoal").click( function() {
     );
 });
 
-$( "#goal1" ).click(function() {
-    $("#goal1").remove()
+$(this).click(function() {
+    $(this.id ).remove()
 });
 $( "#goal2" ).click(function() {
     $("#goal2").remove()
