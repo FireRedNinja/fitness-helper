@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     $("#input").change(function(e) {
 
         for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
@@ -18,6 +17,7 @@ $(document).ready(function() {
 
 
     $('#file-input').change(function() {
+        $('#graphButtons').css("display", "block");
         var elevation = [];
         var heartrate = [];
         var cadence = [];
@@ -301,5 +301,33 @@ $(document).ready(function() {
         reader.readAsText(this.files[0]);
         $('#file-preview').text(this.files[0].name);
 
+    });
+
+    $("#elevationButton").click(function () {
+        $("#elevationButton").css("background-color", "#1F7F70");
+        $("#heartRateButton").css("background-color", "#23A39B");
+        $("#cadenceButton").css("background-color", "#23A39B");
+        $('#myChart').css("display", "block");
+        $('#heartRate').css("display", "none");
+        $('#Cadence').css("display", "none");
+    });
+    
+    //Just remove any old theme
+    $("#heartRateButton").click(function () {
+        $("#elevationButton").css("background-color", "#23A39B");
+        $("#heartRateButton").css("background-color", "#1F7F70");
+        $("#cadenceButton").css("background-color", "#23A39B");
+        $('#myChart').css("display", "none");
+        $('#heartRate').css("display", "block");
+        $('#Cadence').css("display", "none");
+    });
+
+    $("#cadenceButton").click(function () {
+        $("#elevationButton").css("background-color", "#23A39B");
+        $("#heartRateButton").css("background-color", "#23A39B");
+        $("#cadenceButton").css("background-color", "#1F7F70");
+        $('#myChart').css("display", "none");
+        $('#heartRate').css("display", "none");
+        $('#Cadence').css("display", "block");
     });
 });
