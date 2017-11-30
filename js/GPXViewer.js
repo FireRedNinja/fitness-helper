@@ -175,7 +175,7 @@ $(document).ready(function() {
                     xAxes: [{
                         scaleLabel: {
                             labelString: "Time",
-                            fontSize: 12,
+                            fontSize: 14,
                             display: true
                         },
                         ticks: {
