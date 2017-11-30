@@ -158,6 +158,14 @@ $(document).ready(function() {
                 }]
             },
             options: {
+                animation: {
+                    onProgress: function(animation) {
+                        progress.value = animation.animationObject.currentStep / animation.animationObject.numSteps;
+                    },
+                    onAnimationComplete: function(animation){
+                        linea
+                    }
+                },
                 scales: {
                     
                     yAxes: [{
@@ -168,6 +176,7 @@ $(document).ready(function() {
                 }
             }
         });
+        setTimeout(function() { myChart.update(); },1000);
         // end of chartjs
         reader.readAsText(this.files[0]);
         $('#file-preview').text(this.files[0].name);
