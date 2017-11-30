@@ -14,8 +14,7 @@ $('.datepicker').pickadate({
 });
 
 $("#submitPlan").click( function() {
-
-    var goal = '<li class="collection-item avatar"><img src="assets/logo.png" alt="" class="circle"><h5>Date: ' + '</h5><p>Details: ' + $('#workout-plan').text() +  '</p><a href="#!" class="secondary-content"><i class="material-icons">delete</i></a></li>';
+    var goal = '<li class="collection-item avatar"><img src="assets/logo.png" alt="" class="circle"><h5>Date: ' + $('.datepicker').val()  + '</h5><p>Details: ' + $('#workout-plan').val() +  '</p><a href="#!" class="secondary-content"><i class="material-icons">delete</i></a></li>';
     $('#submitPlan').click(
         $(".collection").append(goal)
     );
