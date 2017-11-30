@@ -302,6 +302,7 @@ $(document).ready(function() {
         setTimeout(function() { heartRate.update(); },500);
         setTimeout(function() { Cadence.update(); },500);
         
+        $('canvas').css("visibility: hidden");
         // end of chartjs
         reader.readAsText(this.files[0]);
         $('#file-preview').text(this.files[0].name);
