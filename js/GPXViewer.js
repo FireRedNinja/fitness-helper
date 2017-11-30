@@ -150,16 +150,37 @@ $(document).ready(function() {
             data: {
                 labels: timeArray,
                 datasets: [{
-                    label: 'Elevation',
                     data: elevation,
                     borderWidth: 1,
                     borderColor: 'rgba(255,99,132,1)'
                 }]
             },
             options: {
+                title: {
+                    text: "Run Elevation",
+                    fontSize: 22,
+                    display: true
+                },
+                legend: {
+                    display: false
+                },
                 scales: {
-                    
+                    xAxes: [{
+                        scaleLabel: {
+                            labelString: "Time",
+                            fontSize: 18,
+                            display: true
+                        },
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }],
                     yAxes: [{
+                        scaleLabel: {
+                            labelString: "Elevation (metres)",
+                            fontSize: 18,
+                            display: true
+                        },
                         ticks: {
                             beginAtZero: false
                         }
