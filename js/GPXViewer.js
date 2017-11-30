@@ -80,6 +80,7 @@ $(document).ready(function() {
                 totalLat += parseFloat(lat);
                 totalLon += parseFloat(lon);
                 totalElev += parseFloat(elev);
+
                 cadence.push(cad);
                 elevation.push(parseFloat(elev).toFixed(2));
                 heartrate.push(parseFloat(hr));
@@ -174,7 +175,7 @@ $(document).ready(function() {
                     xAxes: [{
                         scaleLabel: {
                             labelString: "Time",
-                            fontSize: 14,
+                            fontSize: 12,
                             display: true
                         },
                         ticks: {
@@ -300,7 +301,6 @@ $(document).ready(function() {
         // end of chartjs
         reader.readAsText(this.files[0]);
         $('#file-preview').text(this.files[0].name);
-
     });
 
     $("#elevationButton").click(function () {
