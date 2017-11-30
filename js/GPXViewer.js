@@ -73,7 +73,6 @@ $(document).ready(function() {
 
                 var time = new Date(gpxTime);
 
-
                 totalTracks += 1;
                 totalHR += parseInt(hr);
                 totalCAD += parseInt(cad);
@@ -83,7 +82,7 @@ $(document).ready(function() {
 
                 elevation.push(parseFloat(elev));
                 heartrate.push(parseFloat(hr));
-                timeArray.push(parseFloat(time.getMinutes()));
+                timeArray.push(time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
 
                 //  Get the figures for the bounding box
                 if (maxLat == null || maxLon == null || minLat == null || minLon == null) {
@@ -147,21 +146,12 @@ $(document).ready(function() {
         // Chartjs
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
-            scaleSteps:10,
             type: 'line',
             data: {
                 labels: timeArray,
                 datasets: [{
                     label: 'Elevation',
                     data: elevation,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
                     borderColor: [
                         'rgba(255,99,132,1)',
                         'rgba(54, 162, 235, 1)',
@@ -175,6 +165,7 @@ $(document).ready(function() {
             },
             options: {
                 scales: {
+                    
                     yAxes: [{
                         ticks: {
                             beginAtZero: false
