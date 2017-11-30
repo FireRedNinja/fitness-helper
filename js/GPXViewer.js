@@ -166,14 +166,6 @@ $(document).ready(function() {
                 legend: {
                     display: false
                 },
-                animation: {
-                    onProgress: function(animation) {
-                        progress.value = animation.animationObject.currentStep / animation.animationObject.numSteps;
-                    },
-                    onAnimationComplete: function(animation){
-                        linea
-                    }
-                },
                 scales: {
                     xAxes: [{
                         scaleLabel: {
