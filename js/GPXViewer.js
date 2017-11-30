@@ -80,7 +80,7 @@ $(document).ready(function() {
                 totalLon += parseFloat(lon);
                 totalElev += parseFloat(elev);
 
-                elevation.push(parseFloat(elev));
+                elevation.push(Math.round(parseFloat(elev)));
                 heartrate.push(parseFloat(hr));
                 timeArray.push(time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
 
@@ -145,6 +145,7 @@ $(document).ready(function() {
         
 
         // Chartjs
+
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
@@ -164,6 +165,14 @@ $(document).ready(function() {
                 },
                 legend: {
                     display: false
+                },
+                animation: {
+                    onProgress: function(animation) {
+                        progress.value = animation.animationObject.currentStep / animation.animationObject.numSteps;
+                    },
+                    onAnimationComplete: function(animation){
+                        linea
+                    }
                 },
                 scales: {
                     xAxes: [{
@@ -189,6 +198,7 @@ $(document).ready(function() {
                 }
             }
         });
+        setTimeout(function() { myChart.update(); },1000);
         // end of chartjs
         reader.readAsText(this.files[0]);
         $('#file-preview').text(this.files[0].name);
