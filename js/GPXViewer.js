@@ -80,7 +80,7 @@ $(document).ready(function() {
                 totalLon += parseFloat(lon);
                 totalElev += parseFloat(elev);
 
-                elevation.push(Math.round(parseFloat(elev)));
+                elevation.push(parseFloat(elev));
                 heartrate.push(parseFloat(hr));
                 timeArray.push(time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
 

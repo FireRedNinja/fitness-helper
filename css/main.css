@@ -6,6 +6,13 @@ body {
 canvas {
     vertical-align: top;
 }
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+.stats {
+    padding-right: 10px;
+}
 
 .dropdown-content{
     background-color: #FFFFFF;
