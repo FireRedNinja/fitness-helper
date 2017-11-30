@@ -81,9 +81,9 @@ $(document).ready(function() {
                 totalLon += parseFloat(lon);
                 totalElev += parseFloat(elev);
                 cadence.push(cad);
-                elevation.push(parseFloat(elev));
+                elevation.push(parseFloat(elev).toFixed(2));
                 heartrate.push(parseFloat(hr));
-                timeArray.push(time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
+                timeArray.push(time.toLocaleTimeString());
 
                 //  Get the figures for the bounding box
                 if (maxLat == null || maxLon == null || minLat == null || minLon == null) {
@@ -155,6 +155,7 @@ $(document).ready(function() {
             data: {
                 labels: timeArray,
                 datasets: [{
+                    label: "Elevation (m)",
                     data: elevation,
                     borderWidth: 1,
                     borderColor: 'rgba(255,99,132,1)'
@@ -162,8 +163,8 @@ $(document).ready(function() {
             },
             options: {
                 title: {
-                    text: "Run Elevation",
-                    fontSize: 22,
+                    text: "Elevation",
+                    fontSize: 18,
                     display: true
                 },
                 legend: {
@@ -173,17 +174,19 @@ $(document).ready(function() {
                     xAxes: [{
                         scaleLabel: {
                             labelString: "Time",
-                            fontSize: 18,
+                            fontSize: 14,
                             display: true
                         },
                         ticks: {
-                            beginAtZero: false
+                            beginAtZero: false,
+                            maxTicksLimit: 2,
+                            maxRotation: 0,
                         }
                     }],
                     yAxes: [{
                         scaleLabel: {
-                            labelString: "Elevation (metres)",
-                            fontSize: 18,
+                            labelString: "Elevation (m)",
+                            fontSize: 14,
                             display: true
                         },
                         ticks: {
@@ -200,6 +203,7 @@ $(document).ready(function() {
             data: {
                 labels: timeArray,
                 datasets: [{
+                    label: "Heart Rate (BPM)",
                     data: heartrate,
                     borderWidth: 1,
                     borderColor: 'rgba(255,99,132,1)'
@@ -208,27 +212,29 @@ $(document).ready(function() {
             options: {
                 title: {
                     text: "Heart Rate",
-                    fontSize: 22,
+                    fontSize: 18,
                     display: true
                 },
                 legend: {
-                    display: false
+                    display: false,
                 },
                 scales: {
                     xAxes: [{
                         scaleLabel: {
                             labelString: "Time",
-                            fontSize: 18,
+                            fontSize: 14,
                             display: true
                         },
                         ticks: {
-                            beginAtZero: false
+                            beginAtZero: false,
+                            maxTicksLimit: 2,
+                            maxRotation: 0,
                         }
                     }],
                     yAxes: [{
                         scaleLabel: {
-                            labelString: "Heart Rate (metres)",
-                            fontSize: 18,
+                            labelString: "Heart Rate (BPM)",
+                            fontSize: 14,
                             display: true
                         },
                         ticks: {
@@ -247,6 +253,7 @@ $(document).ready(function() {
                 labels: timeArray,
                 datasets: [{
                     data: cadence,
+                    label: "Cadence (RPM)",
                     borderWidth: 1,
                     borderColor: 'rgba(255,99,132,1)'
                 }]
@@ -254,7 +261,7 @@ $(document).ready(function() {
             options: {
                 title: {
                     text: "Cadence",
-                    fontSize: 22,
+                    fontSize: 18,
                     display: true
                 },
                 legend: {
@@ -264,17 +271,19 @@ $(document).ready(function() {
                     xAxes: [{
                         scaleLabel: {
                             labelString: "Time",
-                            fontSize: 18,
+                            fontSize: 14,
                             display: true
                         },
                         ticks: {
-                            beginAtZero: false
+                            beginAtZero: false,
+                            maxTicksLimit: 2,
+                            maxRotation: 0,
                         }
                     }],
                     yAxes: [{
                         scaleLabel: {
-                            labelString: "Cadence things",
-                            fontSize: 18,
+                            labelString: "Cadence (RPM)",
+                            fontSize: 14,
                             display: true
                         },
                         ticks: {
