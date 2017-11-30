@@ -1,17 +1,25 @@
 var uniqueid = 50;
 
 $("#submitGoal").click( function() {
-    var goal = '<li class="collection-item avatar" id="' + uniqueid + '"><img src="assets/logo.png" alt="" class="circle"><h5>' + $('#workout-plan').val() +  '</h5><a id="' + uniqueid + '"href="#!" class="secondary-content"><i class="material-icons">delete</i></a></li>';
+    var goal = '<li class="collection-item avatar" id="goal3"><img src="assets/logo.png" alt="" class="circle"><h5>' + $('#workout-plan').val() +  '</h5><a href="#!" class="secondary-content"><i class="material-icons">delete</i></a></li>';
+    uniqueid++;
     $('#submitGoal').click(
         $(".collection").append(goal)
     );
 });
 
-$(".secondary-content").click(function() {
-    alert($(".secondary-content").attr("id"));
-    $(".secondary-content").attr("id").remove();
+$("#goal1").click(function() {
+    $("#goal1").remove();
 });
 
+
+$("#goal2").click(function() {
+    $("#goal2").remove();
+});
+
+$("#goal3").click(function() {
+    $("#goal3").remove();
+});
 
 
 
