@@ -20,6 +20,7 @@ $(document).ready(function() {
     $('#file-input').change(function() {
         var elevation = [];
         var heartrate = [];
+        var cadence = [];
         var timeArray = [];
 
         var reader = new FileReader();
@@ -79,7 +80,7 @@ $(document).ready(function() {
                 totalLat += parseFloat(lat);
                 totalLon += parseFloat(lon);
                 totalElev += parseFloat(elev);
-
+                cadence.push(cad);
                 elevation.push(parseFloat(elev));
                 heartrate.push(parseFloat(hr));
                 timeArray.push(time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
@@ -142,6 +143,8 @@ $(document).ready(function() {
         console.log(timeArray);
         console.log("elevation");
         console.log(elevation);
+        console.log("Cadence");
+        console.log(cadence);
         
 
         // Chartjs
@@ -190,7 +193,101 @@ $(document).ready(function() {
                 }
             }
         });
-        setTimeout(function() { myChart.update(); },1000);
+
+        var ctx = document.getElementById("heartRate").getContext('2d');
+        var heartRate = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: timeArray,
+                datasets: [{
+                    data: heartrate,
+                    borderWidth: 1,
+                    borderColor: 'rgba(255,99,132,1)'
+                }]
+            },
+            options: {
+                title: {
+                    text: "Heart Rate",
+                    fontSize: 22,
+                    display: true
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        scaleLabel: {
+                            labelString: "Time",
+                            fontSize: 18,
+                            display: true
+                        },
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            labelString: "Heart Rate (metres)",
+                            fontSize: 18,
+                            display: true
+                        },
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }]
+                }
+            }
+        });
+
+
+        var ctx = document.getElementById("Cadence").getContext('2d');
+        var Cadence = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: timeArray,
+                datasets: [{
+                    data: cadence,
+                    borderWidth: 1,
+                    borderColor: 'rgba(255,99,132,1)'
+                }]
+            },
+            options: {
+                title: {
+                    text: "Cadence",
+                    fontSize: 22,
+                    display: true
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        scaleLabel: {
+                            labelString: "Time",
+                            fontSize: 18,
+                            display: true
+                        },
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            labelString: "Cadence things",
+                            fontSize: 18,
+                            display: true
+                        },
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }]
+                }
+            }
+        });
+        setTimeout(function() { myChart.update(); },500);
+        setTimeout(function() { heartRate.update(); },500);
+        setTimeout(function() { Cadence.update(); },500);
+        
         // end of chartjs
         reader.readAsText(this.files[0]);
         $('#file-preview').text(this.files[0].name);
