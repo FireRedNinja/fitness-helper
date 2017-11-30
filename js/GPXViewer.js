@@ -80,7 +80,7 @@ $(document).ready(function() {
                 totalLon += parseFloat(lon);
                 totalElev += parseFloat(elev);
 
-                elevation.push(parseFloat(elev));
+                elevation.push(Math.round(parseFloat(elev)));
                 heartrate.push(parseFloat(hr));
                 timeArray.push(time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
 
@@ -145,6 +145,7 @@ $(document).ready(function() {
         
 
         // Chartjs
+
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
@@ -167,7 +168,7 @@ $(document).ready(function() {
                     }
                 },
                 scales: {
-                    
+
                     yAxes: [{
                         ticks: {
                             beginAtZero: false
