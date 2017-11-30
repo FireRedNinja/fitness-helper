@@ -59,7 +59,7 @@ $(document).ready(function() {
 
 
             // Iterate through all track segements and find a route.
-            $xml.find('trkpt').each(function() {
+            $xml.find('trkpt').each(function() {$('#file-input').change(function() {
                 // this is where all the reading and writing will happen
                 var lat = $(this).attr("lat");
                 var lon = $(this).attr("lon");
@@ -80,6 +80,7 @@ $(document).ready(function() {
                 totalLat += parseFloat(lat);
                 totalLon += parseFloat(lon);
                 totalElev += parseFloat(elev);
+
                 cadence.push(cad);
                 elevation.push(parseFloat(elev));
                 heartrate.push(parseFloat(hr));
@@ -137,7 +138,7 @@ $(document).ready(function() {
 
             map.fitBounds(new google.maps.LatLngBounds(new google.maps.LatLng(minLat, minLon), new google.maps.LatLng(maxLat, maxLon)));
 
-        };
+        });
 
         console.log("time");
         console.log(timeArray);
@@ -173,7 +174,7 @@ $(document).ready(function() {
                     xAxes: [{
                         scaleLabel: {
                             labelString: "Time",
-                            fontSize: 18,
+                            fontSize: 12,
                             display: true
                         },
                         ticks: {
