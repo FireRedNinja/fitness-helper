@@ -142,6 +142,7 @@ $(document).ready(function() {
         console.log(timeArray);
         console.log("elevation");
         console.log(elevation);
+        
 
         // Chartjs
         var ctx = document.getElementById("myChart").getContext('2d');
@@ -167,11 +168,10 @@ $(document).ready(function() {
                 }
             }
         });
+        setTimeout(function() { myChart.update(); },500);
         // end of chartjs
         reader.readAsText(this.files[0]);
         $('#file-preview').text(this.files[0].name);
-
-
 
     });
 });
