@@ -83,7 +83,7 @@ $(document).ready(function() {
 
                 elevation.push(parseFloat(elev));
                 heartrate.push(parseFloat(hr));
-                timeArray.push(parseFloat(time.getTime())/1000/60);
+                timeArray.push(parseFloat(time.getMinutes()));
 
                 //  Get the figures for the bounding box
                 if (maxLat == null || maxLon == null || minLat == null || minLon == null) {
@@ -147,11 +147,12 @@ $(document).ready(function() {
         // Chartjs
         var ctx = document.getElementById("myChart").getContext('2d');
         var myChart = new Chart(ctx, {
+            scaleSteps:10,
             type: 'line',
             data: {
                 labels: timeArray,
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'Elevation',
                     data: elevation,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -176,7 +177,7 @@ $(document).ready(function() {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: false
                         }
                     }]
                 }
