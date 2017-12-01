@@ -38,7 +38,7 @@ function draw() {
     // Update them
     alivePucks[i].update();
     if (count >= 400 && count <= 700) {
-      //alivePucks[i].flickerMode();
+      alivePucks[i].flickerMode();
     } else {
       alivePucks[i].show();
     }
@@ -50,8 +50,8 @@ function draw() {
   }
   Pucks = [];
   arrayCopy(alivePucks, 0, Pucks, 0, alivePucks.length);
-  //slowMode();
-  //invertMode();
+  slowMode();
+  invertMode();
 
   //Paddle Functions
   RightPaddle.show();

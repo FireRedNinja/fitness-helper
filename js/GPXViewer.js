@@ -70,7 +70,7 @@ $(document).ready(function() {
                     startMarker = new google.maps.Marker({
                         position:myLatLong,
                         map: map,
-                        title: "test",
+                        title: "Start",
                         icon: {
                             path: google.maps.SymbolPath.CIRCLE,
                             strokeColor:'green',
@@ -85,7 +85,7 @@ $(document).ready(function() {
                 endMarker = new google.maps.Marker({
                     position:myLatLong,
                     map:map,
-                    title:"test End",
+                    title:"End",
                     icon: {
                         path: google.maps.SymbolPath.CIRCLE,
                         scale: 8,
