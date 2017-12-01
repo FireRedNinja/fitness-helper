@@ -17,13 +17,19 @@
     </ul>
     <nav>
         <div class="nav-wrapper">
-            <a href='index.html'>
-            <img src='assets/logo.png' width="55" ,height="55">
-          </a>
+            <ul class="left">
+                    <li>
+                        <a href='tracy.html'>
+                            <img src='assets/logo.png' width="55" ,height="55">
+                        </a>                     
+                    </li>
+                <li><h4>Fitness Helper</h4></li>
+            </ul>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="tracy.html">Home</a></li>
                 <li><a href="map.html">Map</a></li>
                 <li class="active"><a class="dropdown-button" href="#" data-activates="dropdown1" data-beloworigin="true">Planner<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a href="../index.html">Logout</a></li>                
             </ul>
         </div>
     </nav>
@@ -33,9 +39,9 @@
         <div class="container">
             <div class="row">
                 <h2 class="center-align">Add a Goal</h2>
-                <div>
-                    <div class="input-field col s6"></div>
+                <div class="input-field">
                     <input id="workout-plan" cols="80" rows="25" />
+                    <label class="active" >Add a Goal</label>
                     <td><button id="submitGoal" class="btn waves-effect waves-light center-align" type="submit" name="action">Save Goal</button></td>
                 </div>
             </div>
@@ -49,20 +55,20 @@
             </div>
 
             <ul class="collection">
-                <li class="collection-item avatar" id="goal1">
+                <li class="collection-item avatar" id="g1">
                     <img src="assets/logo.png" alt="" class="circle">
                     <h5>Run 10km</h5>
-                    <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+                    <a href="#!" class="secondary-content" id="goal1"><i class="material-icons">delete</i></a>
                 </li>
-                <li class="collection-item avatar" id="goal2">
+                <li class="collection-item avatar" id="g2">
                     <img src="assets/logo.png" alt="" class="circle">
                     <h5>Run everyday for 12 weeks</h5>
-                    <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+                    <a href="#!" class="secondary-content" id="goal2"><i class="material-icons">delete</i></a>
                 </li>
-                <li class="collection-item avatar" id="goal3">
+                <li class="collection-item avatar" id="g3">
                     <img src="assets/logo.png" alt="" class="circle">
                     <h5>Lose 10kg</h5>
-                    <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+                    <a href="#!" class="secondary-content" id="goal3"><i class="material-icons">delete</i></a>
                 </li>
             </ul>
 

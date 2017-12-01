@@ -7,13 +7,13 @@ $(document).ready = function () {
 
 
 $( "#plan1" ).click(function() {
-    $("#plan1").remove()
+    $("#p1").remove()
 });
 
 $( "#plan2" ).click(function() {
-    $("#plan2").remove()
+    $("#p2").remove()
 });
 
 $( "#plan3" ).click(function() {
-    $("#plan3").remove()
+    $("#p3").remove()
 });

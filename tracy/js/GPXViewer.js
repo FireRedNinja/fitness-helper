@@ -35,7 +35,6 @@ $(document).ready(function() {
 
             // Find Name of Activity
             var $name = $xml.find('name');
-            console.log($name.text());
 
             $('#file-title').text($name.text());
 
@@ -139,13 +138,6 @@ $(document).ready(function() {
             map.fitBounds(new google.maps.LatLngBounds(new google.maps.LatLng(minLat, minLon), new google.maps.LatLng(maxLat, maxLon)));
 
         };
-
-        console.log("time");
-        console.log(timeArray);
-        console.log("elevation");
-        console.log(elevation);
-        console.log("Cadence");
-        console.log(cadence);
         
 
         // Chartjs

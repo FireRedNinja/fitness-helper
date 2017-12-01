@@ -20,13 +20,19 @@
     </ul>
     <nav>
         <div class="nav-wrapper">
-            <a href='index.html'>
-          <img src='assets/logo.png' width="55" ,height="55">
-        </a>
+            <ul class="left">
+                    <li>
+                        <a href='tracy.html'>
+                            <img src='assets/logo.png' width="55" ,height="55">
+                        </a>                     
+                    </li>
+                <li><h4>Fitness Helper</h4></li>
+            </ul>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="tracy.html">Home</a></li>
                 <li><a href="map.html">Map</a></li>
                 <li class="active"><a class="dropdown-button" href="#" data-activates="dropdown1" data-beloworigin="true">Planner<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a href="../index.html">Logout</a></li>                
             </ul>
         </div>
     </nav>
@@ -38,23 +44,19 @@
                 <h2 class="center-align">Planner</h2>
                 <form class="col s12">
                     <div>
-                        <input type="text" class="datepicker" placeholder="Select Date"/>
+                        <label class="active" >Choose a date for your exercise!</label>   
+                        <input type="text" class="datepicker"/>
                     </div>
                 </form>
             </div>
             <table>
                 <tr>
-                    <td>
-                        <h5>
-                        Enter your workout plans here:
-                        </h5>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <div class="input-field col s6"></div>
-                        <input id="workout-plan" cols="80" rows="25" />
-                    </td>
+                    <form class="col s12">
+                        <div>
+                            <label class="active" >Enter your exercise plan</label>   
+                            <input id="workout-plan" class="input-field"/>
+                        </div>
+                    </form>
                 </tr>
                 <tr>
                     <td><button id="submitPlan" class="btn waves-effect waves-light center-align" type="submit" name="action">Save Workout Plan</button></td>
@@ -71,29 +73,28 @@
             </div>
 
             <ul class="collection">
-                <li class="collection-item avatar"  id="plan1">
+                <li class="collection-item avatar"  id="p1">
                     <img src="assets/logo.png" alt="" class="circle">
-                    <h5>Date: 17/12/2017</h5>
+                    <h5>Date: 17 December 2017</h5>
                     <p>Details: Go for a 10k run.</p>
-                    <a href="#!" class="secondary-content" ><i class="material-icons">delete</i></a>
+                    <a href="#!" class="secondary-content" id="plan1"><i class="material-icons">delete</i></a>
                 </li>
-                <li class="collection-item avatar"  id="plan2">
+                <li class="collection-item avatar"  id="p2">
                     <img src="assets/logo.png" alt="" class="circle">
-                    <h5>Date: 25/12/2017</h5>
+                    <h5>Date: 25 December 2017</h5>
                     <p>Details: Go for a 5k jog early Christmas morning. </p>
-                    <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+                    <a href="#!" class="secondary-content" id="plan2"><i class="material-icons">delete</i></a>
                 </li>
-                <li class="collection-item avatar"  id="plan3">
+                <li class="collection-item avatar"  id="p3">
                     <img src="assets/logo.png" alt="" class="circle">
-                    <h5>Date: 01/01/2018</h5>
+                    <h5>Date: 01 January 2018</h5>
                     <p>Details: Go for a run as a new years resolution. </p>
-                    <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+                    <a href="#!" class="secondary-content" id="plan3"><i class="material-icons">delete</i></a>
                 </li>
             </ul>
 
         </div>
     </section>
-    goal1
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/planner.js"></script>
