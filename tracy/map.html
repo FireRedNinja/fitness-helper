@@ -1,95 +1,108 @@
 <html>
-
-<head>
-    <meta http-equiv="Cache-control" content="no-cache"/>     
-    <meta charset="utf-8" />
-    <title>Map</title>
-    <link rel="stylesheet" type="text/css" href="/css/materialize.css" />
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script type="text/javascript" src="/js/GPXViewer.js"></script>
-    <!-- /*<style>
-        .map {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-    </style>*/ -->
-
-</head>
-
-<body>
-    <ul id="dropdown1" class="dropdown-content">
-        <li><a href="planner.html">Exercise Planner</a></li>
-        <li><a href="goals.html">Goals</a></li>
-    </ul>
-    <nav>
-        <div class="nav-wrapper">
-            <a href='index.html'>
-          <img src='assets/logo.png' width="55" ,height="55">
-        </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="index.html">Home</a></li>
-                <li class="active"><a href="map.html">Map</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a class="dropdown-button" href="#" data-activates="dropdown1" data-beloworigin="true">Planner<i class="material-icons right">arrow_drop_down</i></a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container">
-        <form action="#">
-            <div class="file-field input-field">
-                <div class="btn">
-                    <span>File</span>
-                    <input id="file-input" type="file" name="gpxfile" />
-                </div>
-                <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text">
-                    </input>
-                </div>
+    <head>
+        <meta http-equiv="Cache-control" content="no-cache"/>     
+        <meta charset="utf-8" />
+        <title>Map</title>
+        <link rel="stylesheet" type="text/css" href="/css/materialize.css" />
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+        <script type="text/javascript" src="/js/GPXViewer.js"></script>
+        <!-- /*<style>
+            .map {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+        </style>*/ -->
+    
+    </head>
+    
+    <body>
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="planner.html">Exercise Planner</a></li>
+            <li><a href="goals.html">Goals</a></li>
+        </ul>
+        <nav>
+            <div class="nav-wrapper">
+                <ul class="left">
+                    <li>
+                        <a href='tracy.html'>
+                        <img src='assets/logo.png' width="55" ,height="55">
+                        </a>                     
+                    </li>
+                    <li><h4>Fitness Helper</h4></li>
+                </ul>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="map.html">Map</a></li>
+                    <li><a class="dropdown-button" href="#" data-activates="dropdown1" data-beloworigin="true">Planner<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a href="../index.html">Logout</a></li>     
+                </ul>
             </div>
-        </form>
-
-        <div id="map" style="width: 100%; height: 45vh;"></div>
-        <div class="flex-container">
-            <p class="stats" id="average-heartrate" class="flow-text"></p>
-            <p class="stats" id="average-cadence" class="flow-text"></p>
-            <p class="stats" id="average-elevation" class="flow-text"></p>
+        </nav>
+    
+        <div class="container">
+            <form action="#">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+                        <input id="file-input" type="file" name="gpxfile" />
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                        </input>
+                    </div>
+                </div>
+            </form>
+    
+            <div id="map" style="width: 100%; height: 45vh;"></div>
+            <div class="flex-container">
+                <p class="stats" id="average-elevation" class="flow-text"></p>                    
+                <p class="stats" id="average-heartrate" class="flow-text"></p>
+                <p class="stats" id="average-cadence" class="flow-text"></p>
+            </div>
+    
+            <div id="graphButtons" class="row center-align" style="display: none">
+                <button id="elevationButton" type="button" class="btn btn-default" style="background-color: #1F7F70">Elevation</button>
+                <button id="heartRateButton" type="button" class="btn btn-default">Heart Rate</button>
+                <button id="cadenceButton" type="button" class="btn btn-default">Cadence</button>
+            </div>
+    
+            <!-- <div id="selectGraph" class="input-field col s12" style="display: none">
+                    <select>
+                      <option value="selectElevation">Elevation</option>
+                      <option value="selectHeartRate">Heart Rate</option>
+                      <option value="selectCadence">Cadence</option>
+                    </select>
+                    <label>Run Stats</label>
+            </div> -->
+            <canvas id="myChart" width="100%" height="35%"></canvas>
+            <canvas id="heartRate" width="100%" height="35%" style="display: none"></canvas>
+            <canvas id="Cadence" width="100%" height="35%" style="display: none"></canvas>
+            <br>        
+            
         </div>
-        <!-- messing with chartjs -->
-        <canvas id="myChart" width="100%" height="35%"></canvas>
-        <br>
-        <br>
-        <br>
-        <canvas id="heartRate" width="100%" height="35%"></canvas>
-        <br>
-        <br>
-        <br>
-        <canvas id="Cadence" width="100%" height="35%"></canvas>
-        
-        
-    </div>
-
-
-    <script type="text/javascript" src="js/planner.js"></script>
-    <script type="text/javascript" src="js/materialize.js"></script>
-    <script>
-        var map;
-
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: {
-                    lat: 55.86,
-                    lng: -4.25
-                },
-                zoom: 12
-            });
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCNdcClomhEAJvLIG2-jUAocaCrnd-CvA&callback=initMap"></script>
-</body>
-
-</html>
+    
+    
+        <script type="text/javascript" src="js/planner.js"></script>
+        <script type="text/javascript" src="js/materialize.js"></script>
+        <script>
+            var map;
+    
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {
+                        lat: 55.86,
+                        lng: -4.25
+                    },
+                    zoom: 12
+                });
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCNdcClomhEAJvLIG2-jUAocaCrnd-CvA&callback=initMap"></script>
+    </body>
+    
+    </html>
+    
