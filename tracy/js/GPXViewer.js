@@ -128,7 +128,7 @@ $(document).ready(function() {
             });
 
             //  Add the overview stats to preview run details...
-            $('#average-heartrate').text("Average Heartrate: " + Math.round((totalHR / totalTracks)));
+            $('#average-heartrate').text("Average Heart Rate: " + Math.round((totalHR / totalTracks)));
             $('#average-cadence').text("Average Cadence: " + Math.round((totalCAD / totalTracks)));
             $('#average-elevation').text("Average Elevation: " + Math.round((totalElev / totalTracks)));
 
