@@ -28,8 +28,3 @@ canvas {
     z-index: 1;
     will-change: width, height;
 }
-
-@font-face {
-    font-family: "Bebas Neue";
-    src:url("css/fonts/bebas_neue/TTF/BebasNeue_Bold.ttf");
-}
