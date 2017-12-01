@@ -8,18 +8,16 @@ $("#submitGoal").click( function() {
     );
 });
 
-$("#goal1").click(function() {
-    $("#goal1").remove();
+$( "#goal1" ).click(function() {
+    $("#g1").remove()
 });
 
-
-$("#goal2").click(function() {
-    $("#goal2").remove();
+$( "#goal2" ).click(function() {
+    $("#g2").remove()
 });
 
-$("#goal3").click(function() {
-    $("#goal3").remove();
+$( "#goal3" ).click(function() {
+    $("#g3").remove()
 });
-
 
 

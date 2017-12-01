@@ -35,12 +35,13 @@ $(document).ready(function() {
 
             // Find Name of Activity
             var $name = $xml.find('name');
-            console.log($name.text());
 
             $('#file-title').text($name.text());
 
 
-
+            var startMarker = null;
+            var endMarker = null;
+            // How should i handle the end marker?
             var totalTracks = 0;
             var totalHR = 0;
             var totalCAD = 0;
@@ -61,8 +62,36 @@ $(document).ready(function() {
             // Iterate through all track segements and find a route.
             $xml.find('trkpt').each(function() {
                 // this is where all the reading and writing will happen
+                var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
                 var lat = $(this).attr("lat");
                 var lon = $(this).attr("lon");
+                var myLatLong = new google.maps.LatLng(lat,lon);
+                if(startMarker == null){
+                    startMarker = new google.maps.Marker({
+                        position:myLatLong,
+                        map: map,
+                        title: "test",
+                        icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            strokeColor:'green',
+                            scale: 8
+                          },
+                    })                    
+                };
+                if(endMarker != null){
+                    endMarker.setMap(null);
+                }
+                
+                endMarker = new google.maps.Marker({
+                    position:myLatLong,
+                    map:map,
+                    title:"test End",
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 8,
+                        strokeColor:'red',
+                      },
+                });
 
                 var hr = $(this).find('ns3\\:hr').text();
 
@@ -139,15 +168,7 @@ $(document).ready(function() {
             map.fitBounds(new google.maps.LatLngBounds(new google.maps.LatLng(minLat, minLon), new google.maps.LatLng(maxLat, maxLon)));
 
         };
-
-        console.log("time");
-        console.log(timeArray);
-        console.log("elevation");
-        console.log(elevation);
-        console.log("Cadence");
-        console.log(cadence);
         
-
         // Chartjs
 
         var ctx = document.getElementById("myChart").getContext('2d');
