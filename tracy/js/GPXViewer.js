@@ -246,7 +246,7 @@ $(document).ready(function() {
                 labels: timeArray,
                 datasets: [{
                     data: cadence,
-                    label: "Cadence (RPM)",
+                    label: "Cadence (Steps per Minute)",
                     borderWidth: 1,
                     borderColor: 'rgba(255,99,132,1)'
                 }]
@@ -275,7 +275,7 @@ $(document).ready(function() {
                     }],
                     yAxes: [{
                         scaleLabel: {
-                            labelString: "Cadence (RPM)",
+                            labelString: "Cadence (Steps per Minute)",
                             fontSize: 14,
                             display: true
                         },
